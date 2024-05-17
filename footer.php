@@ -46,7 +46,7 @@
       </div>
       <div class="row">
         <div class="col-lg-12 text-center">
-          <p>&copy; 2024 David Gomez</p>
+          <p>&copy; 2024 David Gomez Oscar bertolin</p>
         </div>
       </div>
     </div>
