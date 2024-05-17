@@ -30,10 +30,8 @@
                         <a class="nav-link" href="?accion=mostrarCategorias">Categorías</a>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
-                    <button class="btn btn-outline-light" type="submit">Buscar</button>
-                </form>
+                
+                
                 <?php
                 session_start();
                 $loggedIn = isset($_SESSION['username']);
@@ -46,8 +44,6 @@
                     <a href="./views/index.html" class="btn btn-light ms-3">Iniciar Sesión</a>
                 <?php endif; ?>
 
-
-
                 <!-- Carrito con badge -->
                 <a class="btn btn-primary ms-3" href="?accion=Carrito">
                     <span class="badge bg-danger">0</span> <!-- Número de productos en el carrito -->
@@ -58,10 +54,50 @@
             </div>
         </nav>
 
-
     </header>
 
     <main>
+
+    <?php
+    $accion = isset($_GET['accion']) ? $_GET['accion'] : '';
+    if ($accion != 'mostrar' && $accion != 'mostrarCategorias') {
+        ?>
+    <!-- <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./img/tienda-online.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Tienda Online</h5>
+                    <p>Compra de manera facil y segura.</p>
+                </div>
+            </div>
+            
+            </div>
+            <div class="carousel-item">
+                <img src="./img/sale.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div> -->
+    <?php
+    }
+    ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
         <!-- Contenido dinámico generado por el controlador -->
         <?php
@@ -71,16 +107,14 @@
                 include __DIR__ . '\.\controllers\mostrarProductos.php';
             }
 
-
-            //Para mostrar las Categorias
-            if (isset($_GET['accion']))
+        //Para mostrar las Categorias
+        if (isset($_GET['accion']))
             if ($_GET['accion'] == "mostrarCategorias") {
 
                 include __DIR__ . '\.\controllers\mostrarCategories.php';
             }
 
         ?>
-        
         <div id="contenido"></div>
     </main>
 
