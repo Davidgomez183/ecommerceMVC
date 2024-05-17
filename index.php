@@ -76,7 +76,7 @@
             if (isset($_GET['accion']))
             if ($_GET['accion'] == "mostrarCategorias") {
 
-                include __DIR__ . '\.\controllers\mostrarProductos.php';
+                include __DIR__ . '\.\controllers\mostrarCategories.php';
             }
 
         ?>
