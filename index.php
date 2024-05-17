@@ -27,7 +27,7 @@
                         <a class="nav-link" href="?accion=mostrar" id="cargarProductos">Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Categorías</a>
+                        <a class="nav-link" href="?accion=mostrarCategorias">Categorías</a>
                     </li>
                 </ul>
                 <form class="d-flex">
@@ -71,8 +71,16 @@
                 include __DIR__ . '\.\controllers\mostrarProductos.php';
             }
 
-        ?>
 
+            //Para mostrar las Categorias
+            if (isset($_GET['accion']))
+            if ($_GET['accion'] == "mostrarCategorias") {
+
+                include __DIR__ . '\.\controllers\mostrarProductos.php';
+            }
+
+        ?>
+        
         <div id="contenido"></div>
     </main>
 

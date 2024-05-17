@@ -9,7 +9,5 @@ function obtenirProductos() {
     $Productos = mysqli_fetch_all($resultat, MYSQLI_ASSOC);
     mysqli_close($conexio);
     return $Productos;
-
-    
 }
 
