@@ -28,8 +28,8 @@
         <div class="col-lg-6">
           <h5>Enlaces</h5>
           <ul class="list-unstyled">
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Productos</a></li>
+            <li><a href="./index.php">Inicio</a></li>
+            <li><a href="/">Productos</a></li>
             <li><a href="#">Contacto</a></li>
             <!-- Otros enlaces -->
           </ul>

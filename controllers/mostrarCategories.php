@@ -19,7 +19,7 @@ echo "<div class='container'>";
                 <img src="<?php echo $categoria['imagen']; ?>" class="categoria-imagen card-img-top" alt="Imagen de la categoría">
                     <h5 class="card-title"><?php echo $categoria['nombre']; ?></h5>
                     <p class="card-text"><?php echo $categoria['descripcion']; ?></p>
-                    <a href="?accion=mostrarProductosPorCategoria&id_categoria=<?php echo $categoria['id_categoria']; ?>" class="btn btn-primary">Ver productos</a>
+                    <a href="controllers/mostrarProductoPorCategoria.php?id_categoria=<?php echo $categoria['id_categoria']; ?>" class="btn btn-primary">Ver productos</a>
                 </div>
             </div>
         </div>
@@ -36,6 +36,4 @@ echo "<div class='container'>";
     margin-bottom: 20px;
    
 }
-
-
 </style>

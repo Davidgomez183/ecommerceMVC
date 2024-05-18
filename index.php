@@ -12,7 +12,11 @@
     <!-- Bootstrap Icons CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css" rel="stylesheet"><!-- Enlaces a archivos CSS y JavaScript -->
 </head>
-
+<style>
+        .carousel {
+            margin-top: 40px; /* Ajusta este valor según sea necesario */
+        }
+    </style>
 <body>
     <header>
         <!-- Encabezado de la página  -->
@@ -62,38 +66,7 @@
     $accion = isset($_GET['accion']) ? $_GET['accion'] : '';
     if ($accion != 'mostrar' && $accion != 'mostrarCategorias') {
         ?>
-    <!-- <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            
-        </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="./img/tienda-online.jpg" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Tienda Online</h5>
-                    <p>Compra de manera facil y segura.</p>
-                </div>
-            </div>
-            
-            </div>
-            <div class="carousel-item">
-                <img src="./img/sale.jpg" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    
-                </div>
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div> -->
+        <img src="./img/tienda-online.jpg" class="d-block w-100" alt="...">      
     <?php
     }
     ?>
