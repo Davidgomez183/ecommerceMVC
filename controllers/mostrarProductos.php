@@ -44,9 +44,18 @@ endforeach;
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const buttons = document.querySelectorAll('.add-to-cart');
+        const badge = document.querySelector('.badge');
+
+        let productsInCart = 0;
+
 
         buttons.forEach(button => {
             button.addEventListener('click', function() {
+
+            // Incrementar el contador de productos en el carrito
+            productsInCart++;
+             // Actualizar el valor del badge en la interfaz
+             badge.textContent = productsInCart;
 
                 const productName = this.getAttribute('data_nombre');
                 const productId = this.getAttribute('id_articulo');

@@ -1,32 +1,58 @@
-<!-- views/productosPorCategoria.php -->
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Productos de la Categoría</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        /* Estilos personalizados */
+        .producto-card {
+            margin-bottom: 20px;
+        }
+
+        .producto-imagen {
+            height: 200px;
+            /* Altura fija para todas las imágenes */
+            object-fit: cover;
+            /* Ajustar la imagen dentro del contenedor */
+        }
+    </style>
 </head>
+
 <body>
 
-<div class="container mt-4">
-    <h1>Productos de la Categoría</h1>
-    <div class="row">
-        <?php foreach ($productos as $producto) : ?>
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="<?php echo $producto['foto']; ?>" class="card-img-top" alt="Imagen del producto">
-                    <div class="card-body">
-                        <h5 class="card-title"><?php echo $producto['nombre']; ?></h5>
-                        <p class="card-text"><?php echo $producto['descripcion']; ?></p>
-                        <h3 class="card-text"><?php echo $producto['precio']; ?></h3>
-                        <button class="btn btn-primary">Añadir al carrito</button>
+    <div class="container mt-4">
+        <?php
+        // Obtener el ID de la categoría desde la URL
+        $nombre_categoria = $_GET['id_categoria'];
+        ?>
+        <h1 class="mb-4">Productos de la Categoría: <?php echo $nombre_categoria; ?></h1>
+        <div class="row">
+            <?php foreach ($productos as $producto) : ?>
+                <div class="col-md-4">
+                    <div class="card producto-card">
+                        <img src="<?php echo '../' . $producto['foto']; ?>" class="producto-imagen card-img-top" alt="No hay imagen disponible">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $producto['nombre']; ?></h5>
+                            <p class="card-text"><?php echo $producto['descripcion']; ?></p>
+                            <h3 class="card-text"><?php echo $producto['precio']; ?></h3>
+                            <div class="mt-4">
+                                <a href="javascript:history.go(-1)" class="btn btn-secondary">Categorias</a>
+                            </div>
+                        
+                        </div>
                     </div>
                 </div>
-            </div>
-        <?php endforeach; ?>
+                <!-- Botón para retroceder a la página anterior -->
+
+            <?php endforeach; ?>
+        </div>
+
     </div>
-</div>
-<footer>
-        <?php include __DIR__ . '/../footer.php';   ?>
+    <footer>
+        <?php include __DIR__ . '/../footer.php'; ?>
     </footer>
+
 </body>
+
 </html>
