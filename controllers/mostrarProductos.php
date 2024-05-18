@@ -52,10 +52,10 @@ endforeach;
         buttons.forEach(button => {
             button.addEventListener('click', function() {
 
-            // Incrementar el contador de productos en el carrito
-            productsInCart++;
-             // Actualizar el valor del badge en la interfaz
-             badge.textContent = productsInCart;
+                // Incrementar el contador de productos en el carrito
+                productsInCart++;
+                // Actualizar el valor del badge en la interfaz
+                badge.textContent = productsInCart;
 
                 const productName = this.getAttribute('data_nombre');
                 const productId = this.getAttribute('id_articulo');
@@ -66,23 +66,21 @@ endforeach;
                 console.log(productId);
                 console.log(precio);
                 console.log(descripcion);
+                // Guardar el valor del contador de productos en una variable de sesión
+                 fetch('./controllers/setBadge.php?badge=' + productsInCart);
 
-                fetch('carroFetch.php', {
+                fetch('./controllers/carroFetch.php', {
                         method: 'POST',
                         headers: {
-                            'Content-Type': 'application/json'
+                            'Content-Type': 'application/x-www-form-urlencoded'
                         },
-                        body: JSON.stringify({
-                            id: productId,
-                            precio: precio,
-                            descripcion: descripcion,
-                            productName: productName
-                        })
+                        // Envía la acción como dato de formulario 
+                        body: `productName=${encodeURIComponent(productName)}&productId=${encodeURIComponent(productId)}&precio=${encodeURIComponent(precio)}&descripcion=${encodeURIComponent(descripcion)}`
                     })
-                    .then(response => response.json())
+                    .then(response => response.json()) // Parsea la respuesta como JSON
                     .then(data => {
                         if (data.success) {
-                            alert('Producto añadido al carrito');
+                            console.log(data.message); // Muestra el mensaje recibido desde el servidor
                         } else {
                             alert('Error al añadir el producto al carrito');
                         }
