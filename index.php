@@ -17,10 +17,14 @@
         margin-top: 40px;
         /* Ajusta este valor según sea necesario */
     }
-    .modal-header-custom {
-           
-            color: blue;
+    body {
+            background-color: #f5f5dc; /* Color crema */
         }
+
+    .modal-header-custom {
+
+        color: blue;
+    }
 </style>
 
 <body>
@@ -40,7 +44,10 @@
                         <a class="nav-link" href="?accion=mostrarCategorias">Categorías</a>
                     </li>
                 </ul>
-
+                <!-- Nombre de la página en el centro -->
+                <div class="mx-auto text-center" style="position: absolute; left: 50%; transform: translateX(-50%); font-size: 1.5rem;">
+                    <span class="navbar-text" style="color: white;">&copy;ClockworkBoutique&copy;</span>
+                </div>
 
                 <?php
                 session_start();
@@ -48,10 +55,10 @@
                 ?>
 
                 <?php if ($loggedIn) : ?>
-                    <span class="navbar-text ms-3" style="color: white;">Bienvenido, <?php echo $_SESSION['username']; ?></span>
-                    <a href="logout.php" class="btn btn-light ms-3">Cerrar sesión</a>
+                    <span class="navbar-text ms-3" style="color: white;">!Hola, <?php echo $_SESSION['username']; ?></span>
+                    <a href="logout.php" class="btn btn-light ms-3">Desconectarse</a>
                 <?php else : ?>
-                    <a href="./views/index.html" class="btn btn-light ms-3">Iniciar Sesión</a>
+                    <a href="./views/index.html" class="btn btn-light ms-3">Acceder</a>
                 <?php endif; ?>
 
                 <!-- Carrito con badge -->
@@ -105,7 +112,7 @@
 
 
 
-       
+
 
         ?>
         <div id="contenido"></div>
@@ -118,38 +125,37 @@
 
 </html>
 <!-- Agregar al final del body para asegurarse de que todos los elementos estén cargados -->
-ç
+
 <!-- Modal -->
 <div class="modal fade" id="carritoModal" tabindex="-1" aria-labelledby="carritoModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title modal-header-custom" id="carritoModalLabel">Carro con Fetch</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <?php
-        // Verificar si existe un carrito en la sesión
-        if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])) {
-            // Mostrar el contenido del carrito
-            echo "<h2>Carro de la Compra</h2>";
-            echo "<ul>";
-            foreach ($_SESSION['carrito'] as $producto) {
-                echo "<li>{$producto['productName']} - {$producto['precio']} €  - Cantidad: {$producto['cantidad']}</li>";
-                // Puedes mostrar más detalles del producto si lo deseas
-            }
-             // Agregar botón para realizar la compra
-             echo '<button id="comprarBtn" class="btn btn-success mt-3">Realizar Compra</button>';
-            echo "</ul>";
-            
-        } else {
-            // Si no hay productos en el carrito, mostrar un mensaje indicándolo
-            echo "<p>No hay productos en el carrito.</p>";
-        }
-        ?>
-      </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title modal-header-custom" id="carritoModalLabel">Carro con Fetch</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <?php
+                // Verificar si existe un carrito en la sesión
+                if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])) {
+                    // Mostrar el contenido del carrito
+                    echo "<h2>Carro de la Compra</h2>";
+                    echo "<ul>";
+                    foreach ($_SESSION['carrito'] as $producto) {
+                        echo "<li>{$producto['productName']} - {$producto['precio']} €  - Cantidad: {$producto['cantidad']}</li>";
+                        // Puedes mostrar más detalles del producto si lo deseas
+                    }
+                    // Agregar botón para realizar la compra
+                    echo '<button id="comprarBtn" class="btn btn-success mt-3">Realizar Compra</button>';
+                    echo "</ul>";
+                } else {
+                    // Si no hay productos en el carrito, mostrar un mensaje indicándolo
+                    echo "<p>No hay productos en el carrito.</p>";
+                }
+                ?>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 <!-- Script para abrir automáticamente el modal del carrito si la acción es "Carrito" -->
 <script>

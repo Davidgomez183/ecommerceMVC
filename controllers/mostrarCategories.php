@@ -12,9 +12,9 @@ foreach ($categories as $categoria) :
         echo "</div><div class='row'>";
     }
 ?>
-<div class="col-md-4"> 
-    <div class="card"> 
-        <!-- se hace un foreach que itera por cada categoria que hay dentro de "$categories" entonces mostramos la imagen, nombre y descripcion de la categoria que toca -->
+<div class="col-md-4">
+    <div class="card h-100"> <!-- Añade la clase h-100 para igualar la altura -->
+        <!-- Se hace un foreach que itera por cada categoria que hay dentro de "$categories" entonces mostramos la imagen, nombre y descripcion de la categoria que toca -->
         <div class="card-body">
             <img src="<?php echo $categoria['imagen']; ?>" class="categoria-imagen card-img-top" alt="Imagen de la categoría">
             <h5 class="card-title"><?php echo $categoria['nombre']; ?></h5>
@@ -23,6 +23,7 @@ foreach ($categories as $categoria) :
         </div>
     </div>
 </div>
+
 <?php 
 $count++;
 endforeach; 

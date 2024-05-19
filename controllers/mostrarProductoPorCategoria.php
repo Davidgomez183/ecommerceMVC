@@ -15,3 +15,8 @@ if (isset($_GET['id_categoria'])) {
     exit();
 }
 ?>
+<style>
+    body {
+            background-color: #f5f5dc; /* Color crema */
+        }
+</style>
