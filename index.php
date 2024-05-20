@@ -63,7 +63,7 @@
 
                 <!-- Carrito con badge -->
                 <a class="btn btn-primary ms-3" href="?accion=Carrito">
-                    <span class="badge bg-danger"><?php echo isset($_SESSION['productsInCart']) ? $_SESSION['productsInCart'] : 0; ?></span>
+                    <span class="badge bg-danger"><?php echo isset($_SESSION['productsInCart']) ? $_SESSION['productsInCart'] : "oscar"; ?></span>
                     <i class="bi bi-cart" id="caro"></i> Carrito
 
 
@@ -108,11 +108,6 @@
 
                 include __DIR__ . '\.\controllers\mostrarCategories.php';
             }
-
-
-
-
-
 
         ?>
         <div id="contenido"></div>

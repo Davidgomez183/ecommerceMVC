@@ -19,6 +19,8 @@
     </style>
 </head>
 
+<!-- Al usar el require podemos usar las variables del otro fichero en este, porque junta los ficheros en uno -->
+
 <body>
 
     <div class="container mt-4">
@@ -35,7 +37,7 @@
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $producto['nombre']; ?></h5>
                             <p class="card-text"><?php echo $producto['descripcion']; ?></p>
-                            <h3 class="card-text"><?php echo $producto['precio']; ?></h3>
+                            <h3 class="card-text"><?php echo $producto['precio']; ?>€</h3>
                             <div class="mt-4">
                                 <a href="javascript:history.go(-1)" class="btn btn-secondary">Categorias</a>
                             </div>
@@ -43,6 +45,9 @@
                         </div>
                     </div>
                 </div>
+                <!-- En este foreach ya se muestran solo los productos con la categoria que toca. Porque en el anterior fichero guardamos el producto con la categoria adecuada a través de la funcón -->
+
+
                 <!-- Botón para retroceder a la página anterior -->
 
             <?php endforeach; ?>

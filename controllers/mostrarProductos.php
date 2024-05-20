@@ -20,7 +20,7 @@ foreach ($productes as $atriculos) :
                 <img src="<?php echo $atriculos['foto']; ?>" class="categoria-imagen card-img-top" alt="Imagen del producto">
                 <h5 class="card-title"><?php echo $atriculos['nombre']; ?></h5>
                 <p class="card-text"><?php echo $atriculos['descripcion']; ?></p>
-                <h3 class="card-text"><?php echo $atriculos['precio']; ?></h3>
+                <h3 class="card-text"><?php echo $atriculos['precio']; ?>€</h3>
                 <button class="btn btn-primary add-to-cart" data_nombre="<?php echo $atriculos['nombre']; ?>" id_articulo="<?php echo $atriculos['id_articulo']; ?>" data-precio="<?php echo $atriculos['precio']; ?>" data-descripcion="<?php echo $atriculos['descripcion']; ?>">
                     <i class="bi bi-cart-fill"></i> Añadir al Carrito
                 </button>
