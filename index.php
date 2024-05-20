@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- title de la page -->
     <title>ecommerceMVC</title>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -46,7 +47,7 @@
                 </ul>
                 <!-- Nombre de la página en el centro -->
                 <div class="mx-auto text-center" style="position: absolute; left: 50%; transform: translateX(-50%); font-size: 1.5rem;">
-                    <span class="navbar-text" style="color: white;">&copy;ClockworkBoutique&copy;</span>
+                    <span class="navbar-text" style="color: white;">&copy;InTime&copy;</span>
                 </div>
 
                 <?php
@@ -55,7 +56,7 @@
                 ?>
 
                 <?php if ($loggedIn) : ?>
-                    <span class="navbar-text ms-3" style="color: white;">!Hola, <?php echo $_SESSION['username']; ?></span>
+                    <span class="navbar-text ms-3" style="color: white;">¡Hola!, <?php echo $_SESSION['username']; ?></span>
                     <a href="logout.php" class="btn btn-light ms-3">Desconectarse</a>
                 <?php else : ?>
                     <a href="./views/index.html" class="btn btn-light ms-3">Acceder</a>
@@ -63,7 +64,7 @@
 
                 <!-- Carrito con badge -->
                 <a class="btn btn-primary ms-3" href="?accion=Carrito">
-                    <span class="badge bg-danger"><?php echo isset($_SESSION['productsInCart']) ? $_SESSION['productsInCart'] : "oscar"; ?></span>
+                    <span class="badge bg-danger"><?php echo isset($_SESSION['productsInCart']) ? $_SESSION['productsInCart'] : "¡No hay!"; ?></span>
                     <i class="bi bi-cart" id="caro"></i> Carrito
 
 
@@ -122,7 +123,7 @@
 
 <!-- Agregar al final del body para asegurarse de que todos los elementos estén cargados -->
 
-<!-- Modal -->
+<!-- Modal es la ventanita que sale en la pantall. Da igual donde este ubicada. -->
 <div class="modal fade" id="carritoModal" tabindex="-1" aria-labelledby="carritoModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -132,12 +133,13 @@
             </div>
             <div class="modal-body">
                 <?php
-                // Verificar si existe un carrito en la sesión
+                // Verificar si existe un carrito en la sesión y no esta vacio.
                 if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])) {
                     // Mostrar el contenido del carrito
                     echo "<h2>Carro de la Compra</h2>";
                     echo "<ul>";
                     foreach ($_SESSION['carrito'] as $producto) {
+                        //Mostrar los productos
                         echo "<li>{$producto['productName']} - {$producto['precio']} €  - Cantidad: {$producto['cantidad']}</li>";
                         // Puedes mostrar más detalles del producto si lo deseas
                     }

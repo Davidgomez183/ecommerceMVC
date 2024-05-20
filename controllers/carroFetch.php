@@ -1,6 +1,6 @@
 <?php
 
-// Iniciar sesión para manejar el carrito
+// Iniciar sesión para manejar el carrito 
 session_start();
 
 // Verificar si se recibieron datos POST
@@ -16,12 +16,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             'cantidad' => 1 // Iniciar con cantidad 1
         );
 
-        // Verificar si el carrito ya existe en la sesión
+        // Verificar si existe un array carrito, sino lo crea
         if (!isset($_SESSION['carrito'])) {
             $_SESSION['carrito'] = array();
         }
 
-        // Buscar si el producto ya existe en el carrito
+        // Buscar si el producto ya existe en el carrito, si el producto ya existe aumentar ese producto +1
         $productoEncontrado = false;
         foreach ($_SESSION['carrito'] as &$producto) {
             if ($producto['productId'] === $nuevoProducto['productId']) {
