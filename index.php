@@ -124,6 +124,7 @@
 </body>
 
 </html>
+
 <!-- Agregar al final del body para asegurarse de que todos los elementos estén cargados -->
 
 <!-- Modal -->
