@@ -7,7 +7,7 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Verificar si se recibieron los datos esperados
     if (isset($_POST['productName']) && isset($_POST['productId']) && isset($_POST['precio']) && isset($_POST['descripcion'])) {
-        // Crear un array asociativo con los datos recibidos
+        // Crear un array asociativo con los datos recibidos clau:valor
         $nuevoProducto = array(
             'productName' => $_POST['productName'],
             'productId' => $_POST['productId'],
@@ -25,9 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $productoEncontrado = false;
         foreach ($_SESSION['carrito'] as &$producto) {
             if ($producto['productId'] === $nuevoProducto['productId']) {
-                $producto['cantidad'] += 1;
+                $producto['cantidad'] += 1; // Si ya existe incrementar
                 $productoEncontrado = true;
-                break;
+                break; //Romper el foreach
             }
         }
 
@@ -38,13 +38,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Puedes enviar una respuesta al cliente si es necesario
         // Devuelve un objeto JSON
+        // Aqui se controla el success
         echo json_encode(array("message" => "¡Producto añadido al carrito!", "success" => true));
 
     } else {
-        // Si falta alguno de los datos esperados, enviar un mensaje de error
+        // Aqui se controla el success. Si falta alguno de los datos esperados, enviar un mensaje de error
         echo json_encode(array("message" => "Faltan datos en la solicitud.", "success" => false));
     }
 } else {
+    //Aqui se controla el success
     // Si no es una solicitud POST, enviar un mensaje de error
     echo json_encode(array("message" => "Este script solo acepta solicitudes POST.", "success" => false));
 }

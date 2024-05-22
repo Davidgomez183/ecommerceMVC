@@ -18,9 +18,11 @@
         margin-top: 40px;
         /* Ajusta este valor según sea necesario */
     }
+
     body {
-            background-color: #f5f5dc; /* Color crema */
-        }
+        background-color: #f5f5dc;
+        /* Color crema */
+    }
 
     .modal-header-custom {
 
@@ -96,7 +98,7 @@
                 if ($loggedIn || !isset($_GET['accion']) || $_GET['accion'] != 'mostrar') {
                     include __DIR__ . '\.\controllers\mostrarProductos.php';
                 } else {
-                    // Mensaje de advertencia con estilos CSS
+                    // Mensaje de advertencia con estilos CSS y mucho mas!
                     echo '<div style="background-color: #f8d7da; color: #721c24; padding: 20px; margin-bottom: 20px; font-size: 30px; margin-top: 8%;">';
                     echo "Por favor inicia sesión para ver los productos.";
                     echo '</div>';
@@ -138,13 +140,14 @@
                     // Mostrar el contenido del carrito
                     echo "<h2>Carro de la Compra</h2>";
                     echo "<ul>";
-                    foreach ($_SESSION['carrito'] as $producto) {
-                        //Mostrar los productos
+                    foreach ($_SESSION['carrito'] as $index => $producto) {
+                        // Mostrar los productos
                         echo "<li>{$producto['productName']} - {$producto['precio']} €  - Cantidad: {$producto['cantidad']}</li>";
-                        // Puedes mostrar más detalles del producto si lo deseas
                     }
                     // Agregar botón para realizar la compra
-                    echo '<button id="comprarBtn" class="btn btn-success mt-3">Realizar Compra</button>';
+                    // Crear un string JSON con los productos para pasarlo como atributo de datos
+                    $productosJson = json_encode($_SESSION['carrito']);
+                    echo '<button id="comprarBtn" class="btn btn-success mt-3" data-productos=\'' . $productosJson . '\'>Realizar Compra</button>';
                     echo "</ul>";
                 } else {
                     // Si no hay productos en el carrito, mostrar un mensaje indicándolo
@@ -164,5 +167,38 @@
             const carritoModal = new bootstrap.Modal(document.getElementById('carritoModal'));
             carritoModal.show();
         }
+    });
+
+    // Este evento espera a que se carge toda la pagina y despues ejecuta el evento.
+    document.addEventListener('DOMContentLoaded', function() {
+        const comprarBtn = document.getElementById('comprarBtn');
+        comprarBtn.addEventListener('click', function() {
+            // Obtener los productos del atributo data-productos
+            const productos = JSON.parse(comprarBtn.getAttribute('data-productos'));
+
+            // Ahora puedes usar los productos para realizar la compra
+            console.log(productos); // Aquí puedes ver los productos en la consola
+
+            // Crear el cuerpo de la solicitud
+            const data = new FormData();
+            data.append('productos', JSON.stringify(productos));
+
+            // Enviar solicitud fetch
+            fetch('ventas.php', {
+                    method: 'POST',
+                    body: data
+                })
+                .then(response => response.text())
+                .then(result => {
+                    console.log(result);
+                    alert("Insert realizado exitosamente!");
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("Hubo un error al realizar el insert.");
+                });
+        });
+
+
     });
 </script>

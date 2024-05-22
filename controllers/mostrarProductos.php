@@ -48,12 +48,16 @@ endforeach;
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
+        //Coje todos los button de los productos
         const buttons = document.querySelectorAll('.add-to-cart');
+        
+        //Cojer el badge 
         const badge = document.querySelector('.badge');
 
+        // Valor inicial del Badge
         let productsInCart = 0;
 
-
+        // Hacemos un forEach de todos los buttons y con su evento click
         buttons.forEach(button => {
             button.addEventListener('click', function() {
 
@@ -68,12 +72,16 @@ endforeach;
                 const precio = this.getAttribute('data-precio');
                 const descripcion = this.getAttribute('data-descripcion');
 
+                // Info por conssla
                 console.log(productName);
                 console.log(productId);
                 console.log(precio);
                 console.log(descripcion);
-                // Guardar el valor del contador de productos en una variable de sesión
+
+                // Guardar el valor del contador pasando por parametros a php
+                // para poner su valor en una variable de ssesion GET
                 fetch('./controllers/setBadge.php?badge=' + productsInCart);
+
                 // Pasar info al php en segundo plano para que guarde la informacion en un array de ssesion $_SESSION['carrito'] = array();
                 fetch('./controllers/carroFetch.php', {
                         method: 'POST',
