@@ -192,6 +192,13 @@
                 .then(result => {
                     console.log(result);
                     alert("Insert realizado exitosamente!");
+
+                    // Actualizar el contenido del modal del carrito
+                    if (data.carrito_limpio) {
+                                document.querySelector('.modal-body').innerHTML = "<p>No hay productos en el carrito.</p>";
+                                document.getElementById('comprarBtn').style.display = 'none'; // Ocultar el botón de compra
+                               
+                            }
                 })
                 .catch(error => {
                     console.error('Error:', error);

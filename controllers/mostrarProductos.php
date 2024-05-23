@@ -50,7 +50,7 @@ endforeach;
     document.addEventListener("DOMContentLoaded", function() {
         //Coje todos los button de los productos
         const buttons = document.querySelectorAll('.add-to-cart');
-        
+
         //Cojer el badge 
         const badge = document.querySelector('.badge');
 
@@ -95,6 +95,7 @@ endforeach;
                     .then(data => {
                         if (data.success) {
                             console.log(data.message); // Muestra el mensaje recibido desde el servidor
+
                         } else {
                             alert('Error al añadir el producto al carrito');
                         }
